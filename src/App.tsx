@@ -1,15 +1,24 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
-import { Home } from './features/Home/Home';
-import { EditResume } from './features/EditResume/EditResume';
+import { lazy, Suspense } from 'react';
+
+const Home = lazy(() => import('./features/Home/Home'));
+const EditResume = lazy(() => import('./features/EditResume/EditResume'));
+
+const Loading = () => {
+  return <div>Loading ...</div>;
+};
 
 export const App: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />} />
-        <Route path="edit/:resumeId" element={<EditResume />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="edit/:resumeId" element={<EditResume />} />
+          <Route path="*" element={<Navigate to={'/'} replace />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
