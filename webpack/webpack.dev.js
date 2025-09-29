@@ -9,13 +9,14 @@ module.exports = merge(common, {
     hot: true,
     port: 3000,
     historyApiFallback: true,
-    proxy: {
-      '/yandex-api': {
+    proxy: [
+      {
+        context: ['/yandex-api'],
         target: 'https://llm.api.cloud.yandex.net',
         changeOrigin: true,
         pathRewrite: { '^/yandex-api': '' },
         secure: true,
       },
-    },
+    ],
   },
 });

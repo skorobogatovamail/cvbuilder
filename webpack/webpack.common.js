@@ -36,10 +36,12 @@ module.exports = {
             options: {
               modules: {
                 localIdentName: '[name]__[local]--[hash:base64:5]',
+                exportLocalsConvention: 'camelCase',
+                namedExport: false,
+                exportOnlyLocals: false,
               },
             },
           },
-          'css-modules-typescript-loader',
         ],
       },
       {
