@@ -7,11 +7,8 @@ h4,
 h5,
 h6 {
   font-family: var(--font-family-heading);
-
   font-weight: var(--font-weight-bold);
-
   line-height: var(--line-height-tight);
-
   margin-bottom: var(--spacing-4);
 }
 

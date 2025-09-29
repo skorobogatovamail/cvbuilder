@@ -37,10 +37,7 @@ module.exports = merge(common, {
     }),
   ],
   optimization: {
-    minimizer: [
-      new TerserPlugin(),
-      new CssMinimizerPlugin(),
-    ],
+    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
