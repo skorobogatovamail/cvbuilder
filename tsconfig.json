@@ -17,10 +17,10 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["client/src/*"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "include": ["src", "**/*.d.ts"],
+  "include": ["client/src", "**/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
