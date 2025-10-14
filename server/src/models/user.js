@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes, Model } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../db/index.js';
 
 class User extends Model {}
@@ -34,5 +34,3 @@ User.init(
     modelName: 'User',
   }
 );
-
-console.log(User === sequelize.models.User);
