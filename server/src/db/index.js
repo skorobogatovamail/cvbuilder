@@ -1,9 +1,11 @@
 import { Sequelize } from 'sequelize';
-import { config } from '../config.js';
+import { config } from '../../config.js';
 
-export const db = new Sequelize({
+export const sequelize = new Sequelize({
+  dialect: 'postgres',
   name: config.db.name,
+  username: 'postgres',
+  password: config.db.password,
   host: config.db.host,
   port: config.db.port,
-  username: config.db.username,
 });
