@@ -1,7 +1,7 @@
-import { Sequelize } from 'sequelize';
-import { config } from '../../config.js';
+const { Sequelize } = require('sequelize');
+const config = require('../../config');
 
-export const sequelize = new Sequelize({
+const sequelize = new Sequelize({
   dialect: 'postgres',
   name: config.db.name,
   username: 'postgres',
@@ -9,3 +9,5 @@ export const sequelize = new Sequelize({
   host: config.db.host,
   port: config.db.port,
 });
+
+module.exports = { sequelize };

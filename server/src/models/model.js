@@ -1,5 +1,5 @@
-import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '../db/index.js';
+const { DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../db/index');
 
 class User extends Model {}
 
@@ -144,4 +144,4 @@ Experience.belongsTo(Resume);
 Resume.hasMany(Education, { as: 'educations' });
 Education.belongsTo(Resume);
 
-export { User, Resume, Experience, Education };
+module.exports = { User, Resume, Experience, Education };

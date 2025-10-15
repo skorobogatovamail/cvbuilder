@@ -1,7 +1,9 @@
-import { Router } from 'express';
-import { celebrate } from 'celebrate';
+const { Router } = require('express');
+const { celebrate } = require('celebrate');
 
-const router = Router();
+const router = new Router();
 
-router.get('/resume', celebrate(getResumeSchema), getResume);
-router.get('/resume/:id', celebrate(getResumeSchema), getResumeById);
+router.get('/', celebrate(getResumeSchema), getResume);
+router.get('/:id', celebrate(getResumeSchema), getResumeById);
+
+module.exports = { router };
