@@ -1,6 +1,40 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../db/index.js';
 
+class User extends Model {}
+
+User.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    login: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'USER',
+    },
+  },
+  {
+    sequelize,
+    modelName: 'User',
+  }
+);
+
 class Resume extends Model {}
 
 Resume.init(
@@ -16,6 +50,13 @@ Resume.init(
     },
     description: {
       type: DataTypes.STRING,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: User,
+        key: 'id',
+      },
     },
   },
   {
@@ -96,10 +137,11 @@ Education.init({
   },
 });
 
-// Define the association between Resume and Experience
+User.hasMany(Resume, { as: 'resumes' });
+Resume.belongsTo(User);
 Resume.hasMany(Experience, { as: 'experiences' });
 Experience.belongsTo(Resume);
 Resume.hasMany(Education, { as: 'educations' });
 Education.belongsTo(Resume);
 
-export { Resume, Experience };
+export { User, Resume, Experience, Education };
